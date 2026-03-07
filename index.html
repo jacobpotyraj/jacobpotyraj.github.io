@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jacob Potyraj | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c10;
+      --bg2:       #0d1117;
+      --bg3:       #111820;
+      --border:    #1e2d3d;
+      --cyan:      #00c9a7;
+      --cyan-dim:  #00c9a740;
+      --amber:     #f0a500;
+      --amber-dim: #f0a52030;
+      --text:      #cdd9e5;
+      --text-dim:  #637589;
+      --text-faint:#2d3f50;
+      --mono:      'IBM Plex Mono', monospace;
+      --display:   'Syne', sans-serif;
+      --body:      'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--text-faint) 1px, transparent 1px),
+        linear-gradient(90deg, var(--text-faint) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      z-index: 1;
+    }
+
+    .hero-content { max-width: 860px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--cyan-dim);
+      border-radius: 2px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 9vw, 8rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 .last { color: var(--cyan); }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 640px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: var(--bg);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover { background: #00e8bf; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 640px;
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── STORY ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .story-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .story-card:hover { border-color: var(--cyan-dim); }
+
+    .story-card.featured {
+      grid-column: 1 / -1;
+      border-color: var(--cyan-dim);
+      background: linear-gradient(135deg, var(--bg2) 0%, #0a1520 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+
+    .card-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-body {
+      font-size: 0.93rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .card-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      margin-top: 1.2rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--cyan-dim);
+      transform: translateY(-2px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+    }
+
+    .project-body { padding: 1.75rem; }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .metric-pill {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .metric-pill.cyan { background: var(--cyan-dim); color: var(--cyan); }
+    .metric-pill.amber { background: var(--amber-dim); color: var(--amber); }
+
+    .project-stack {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+    }
+
+    .skill-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      color: var(--text-dim);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-block {
+      max-width: 860px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .exp-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--cyan);
+    }
+
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.93rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.5rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .exp-bullets li:hover { border-left-color: var(--cyan); color: var(--text); }
+
+    .exp-bullets li strong { color: var(--text); font-weight: 500; }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      max-width: 640px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .story-grid { grid-template-columns: 1fr; }
+      .story-card.featured { grid-column: 1; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">jp://portfolio</span>
+    <ul class="nav-links">
+      <li><a href="#story">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag fade-in">Available · Open to Relocation</div>
+      <h1 class="fade-in">Jacob<br><span class="last">Potyraj</span></h1>
+      <p class="hero-sub fade-in">Software Engineer / Computer Vision & ML</p>
+      <p class="hero-desc fade-in">
+        4 years building <strong>production CV/ML systems</strong> on the factory floor.
+        Real hardware, real constraints, real stakes. Sub-500ms inspection cycles.
+        50+ deployed lines. One model running on 30+ simultaneous systems.
+        Now looking to bring that depth to a new role.
+      </p>
+      <div class="hero-stats fade-in">
+        <div class="stat">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Years Production CV</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">Deployed Lines</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">$1.2M</span>
+          <span class="stat-label">Annual Savings</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5.2%</span>
+          <span class="stat-label">Part Loss Reduction</span>
+        </div>
+      </div>
+      <div class="hero-cta fade-in">
+        <a href="mailto:jpotyraj1@gmail.com" class="btn btn-primary">Get In Touch</a>
+        <a href="https://linkedin.com/in/jacob-potyraj" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/jacobpotyraj" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <p class="section-label">Gentex Corporation · 2021–Present</p>
+    <h2 class="section-title">Production ML at Scale</h2>
+    <p class="section-intro">
+      Most ML engineers work with clean datasets and cloud compute.
+      I work with factory cameras, industrial hardware signals, and a robot waiting on my inference result.
+      Here's what that looks like.
+    </p>
+    <div class="story-grid">
+      <div class="story-card featured">
+        <p class="card-tag">⭐ Flagship Achievement</p>
+        <h3 class="card-title">One Model to Rule Them All</h3>
+        <p class="card-body">
+          Parts were being scrapped on downstream assembly lines, not because of real defects,
+          but because each inspection station had its own brittle classical CV settings tuned
+          to its specific lighting and camera setup. A part passing one station's thresholds
+          would fail another's.<br><br>
+          I identified this systemic problem, proposed the fix, and built it: a single generalizable
+          deep learning model trained on images collected from every production system simultaneously.
+          One model. Deployed across <strong style="color:var(--text)">30+ lines in parallel</strong>.
+          The entire class of cross-station false scrap failures: eliminated.
+        </p>
+        <span class="card-metric">30+ simultaneous deployments · false scrap class eliminated</span>
+      </div>
+
+      <div class="story-card">
+        <p class="card-tag">Architecture</p>
+        <h3 class="card-title">Two-Stage Detection Pipeline</h3>
+        <p class="card-body">
+          Built from production necessity before knowing it had an academic name:
+          traditional image processing isolates and crops the target region, the neural net
+          classifies only that region. Faster inference, better accuracy. Coordinate transforms
+          map results back to the original full image. This is architecturally identical
+          to Faster R-CNN, invented independently.
+        </p>
+        <span class="card-metric">Two-stage object detector · region isolation + classification</span>
+      </div>
+
+      <div class="story-card">
+        <p class="card-tag">Data Infrastructure</p>
+        <h3 class="card-title">Semi-Automated Labeling Pipeline</h3>
+        <p class="card-body">
+          Scripts collect images from every production system, run image processing algorithms
+          to auto-generate bounding box label proposals, and deduplicate by part ID.
+          Human verification step for quality. Scale AI built a $7B company on this concept.
+          I built it for my domain because I needed it.
+        </p>
+        <span class="card-metric">Human-in-the-loop · automated proposal generation</span>
+      </div>
+
+      <div class="story-card">
+        <p class="card-tag">MLOps</p>
+        <h3 class="card-title">Closed-Loop ML Pipeline</h3>
+        <p class="card-body">
+          After deployment, the model saves every fail-case image pre-cropped and pre-organized,
+          already in the right format for labeling. The hardest cases the model encounters
+          automatically feed back into the retraining pipeline. Hard negative mining,
+          built intuitively before knowing the term.
+        </p>
+        <span class="card-metric">Active learning · hard negative mining · continuous improvement</span>
+      </div>
+
+      <div class="story-card">
+        <p class="card-tag">Measured Impact</p>
+        <h3 class="card-title">$1.2M Annual Savings</h3>
+        <p class="card-body">
+          5.2% part loss reduction measured in production over the data collection period.
+          $1.2M annual savings estimated by the team from that measurement applied
+          to production volume and part costs. Sub-500ms inspection cycle with
+          robot actuation acting on results immediately.
+        </p>
+        <span class="card-metric">5.2% part loss reduction · &lt;500ms hard real-time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">
+      Bridging 4 years of production CV experience with the modern ML stack.
+      Every project here mirrors real manufacturing workflows.
+    </p>
+    <div class="projects-grid">
+
+      <!-- MVTec -->
+      <div class="project-card">
+        <img src="images/prediction_grid.png" alt="MVTec prediction grid" class="project-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none">prediction_grid.png</div>
+        <div class="project-body">
+          <p class="project-tag">Industrial Defect Detection</p>
+          <h3 class="project-title">MVTec Metal Nut Classifier</h3>
+          <p class="project-desc">
+            End-to-end defect detection pipeline on the MVTec Anomaly Detection benchmark.
+            ResNet18 transfer learning with domain-knowledge-driven augmentation strategy,
+            excluding flips and color jitter because those augmentations directly simulate
+            defect classes. 221 training images. Near-perfect results.
+          </p>
+          <div class="project-metrics">
+            <span class="metric-pill cyan">F1: 0.990</span>
+            <span class="metric-pill cyan">Precision: 1.000</span>
+            <span class="metric-pill cyan">Recall: 0.979</span>
+            <span class="metric-pill amber">1.82x ONNX speedup</span>
+          </div>
+          <p class="project-stack">Python · PyTorch · ONNX · ResNet18 · MVTec AD</p>
+        </div>
+      </div>
+
+      <!-- CIFAR-10 -->
+      <div class="project-card">
+        <img src="images/benchmark_chart.png" alt="Benchmark chart" class="project-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-placeholder" style="display:none">benchmark_chart.png</div>
+        <div class="project-body">
+          <p class="project-tag">Inference Optimization</p>
+          <h3 class="project-title">CNN Inference Pipeline Benchmark</h3>
+          <p class="project-desc">
+            CNN classifier trained from scratch on CIFAR-10, exported to ONNX,
+            and benchmarked GPU-to-GPU against native PyTorch. Full model lifecycle:
+            architecture design, training, ONNX export with dynamic batching,
+            and ONNX Runtime deployment.
+          </p>
+          <div class="project-metrics">
+            <span class="metric-pill cyan">76.74% accuracy</span>
+            <span class="metric-pill amber">2.13x speedup</span>
+            <span class="metric-pill cyan">0.596ms → 0.280ms</span>
+          </div>
+          <p class="project-stack">Python · PyTorch · ONNX Runtime · CUDA · GTX 1080 Ti</p>
+        </div>
+      </div>
+
+      <!-- LoL -->
+      <div class="project-card">
+        <div class="project-img-placeholder">League of Legends VOD Tool</div>
+        <div class="project-body">
+          <p class="project-tag">Video Analysis Pipeline</p>
+          <h3 class="project-title">League of Legends VOD Analyzer</h3>
+          <p class="project-desc">
+            Video analysis pipeline to automatically track map positions,
+            detect player movement patterns, identify strategic timing windows,
+            and evaluate team compositions from match footage.
+            Integrated Riot Games API and web scraping for structured data ingestion.
+          </p>
+          <div class="project-metrics">
+            <span class="metric-pill cyan">CV pipeline</span>
+            <span class="metric-pill cyan">API integration</span>
+          </div>
+          <p class="project-stack">Python · PyTorch · OpenCV · Beautiful Soup · Riot API</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Technical Stack</p>
+    <h2 class="section-title">Skills</h2>
+    <p class="section-intro">Production-tested, not just listed.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-label">Proficient</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Windows Forms</span>
+          <span class="skill-tag">REST API Integration</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">Real-Time Systems</span>
+          <span class="skill-tag">Edge Deployment</span>
+          <span class="skill-tag">Hardware/Software Integration</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">ML / AI</p>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">ONNX</span>
+          <span class="skill-tag">Transfer Learning</span>
+          <span class="skill-tag">Fine-Tuning</span>
+          <span class="skill-tag">Object Detection</span>
+          <span class="skill-tag">Image Classification</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">Inference Optimization</span>
+          <span class="skill-tag">Model Deployment</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Systems & Integration</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Embedded Systems Integration</span>
+          <span class="skill-tag">Desktop Application Development</span>
+          <span class="skill-tag">Hardware/Software Integration</span>
+          <span class="skill-tag">Camera Systems</span>
+          <span class="skill-tag">Sensor Integration</span>
+          <span class="skill-tag">Two-Stage Detection Pipelines</span>
+          <span class="skill-tag">Spatial Coordinate Transforms</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Data</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Semi-Automated Labeling</span>
+          <span class="skill-tag">Active Learning</span>
+          <span class="skill-tag">Hard Negative Mining</span>
+          <span class="skill-tag">Closed-Loop ML</span>
+          <span class="skill-tag">Dataset Curation</span>
+          <span class="skill-tag">Model Versioning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Backend</p>
+        <div class="skill-tags">
+          <span class="skill-tag">.NET</span>
+          <span class="skill-tag">Microservices</span>
+          <span class="skill-tag">Real-Time Data Processing</span>
+          <span class="skill-tag">Observability & Logging</span>
+          <span class="skill-tag">Performance Profiling</span>
+          <span class="skill-tag">CI/CD Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Familiar</p>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">TensorRT</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Unity</span>
+          <span class="skill-tag">Halcon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Let's Talk</h2>
+      <p class="section-intro">
+        I'm actively looking for software engineering roles and open to relocation.
+        Whether it's CV, ML, backend, systems, or robotics,
+        if you're building something real, I want to hear about it.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:jpotyraj1@gmail.com" class="btn btn-primary">jpotyraj1@gmail.com</a>
+        <a href="https://linkedin.com/in/jacob-potyraj" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/jacobpotyraj" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Jacob Potyraj · Grand Rapids, MI · Open to Relocation · (616) 498-1209</span>
+  </footer>
+
+</body>
+</html>
