@@ -605,7 +605,7 @@
         real users, and zero tolerance for downtime. I design, build, and deploy end-to-end
         applications spanning machine learning, backend services, real-time data pipelines,
         and desktop tooling. My software runs 24/7 on the factory floor and directly drives
-        automated decision-making at scale.
+        automated decision-making on active production lines.
       </p>
       <div class="hero-stats fade-in">
         <div class="stat">
@@ -653,11 +653,11 @@
           Good product was being thrown away unnecessarily.<br><br>
           I identified the root cause, proposed a solution, and built it: a single deep learning
           model trained on data collected from every station simultaneously, replacing dozens of
-          brittle per-system configurations. Deployed and running across
-          <strong style="color:var(--text)">30+ systems in parallel</strong>.
+          brittle per-system configurations. The same model is deployed and running independently
+          across <strong style="color:var(--text)">30+ systems</strong>.
           The entire category of cross-system false rejections was eliminated.
         </p>
-        <span class="card-metric">30+ simultaneous deployments · cross-system false rejections eliminated</span>
+        <span class="card-metric">30+ independent deployments · cross-system false rejections eliminated</span>
       </div>
 
       <div class="story-card">
@@ -687,16 +687,15 @@
       </div>
 
       <div class="story-card">
-        <p class="card-tag">MLOps</p>
-        <h3 class="card-title">Continuous Model Improvement Pipeline</h3>
+        <p class="card-tag">Data Infrastructure</p>
+        <h3 class="card-title">Automated Data Collection Pipeline for Model Retraining</h3>
         <p class="card-body">
-          After deployment, the system automatically logs every failure case,
-          organizes it by category, and stores it ready for retraining.
-          The cases the model struggles with most are automatically surfaced
-          and fed back into the training pipeline. Models improve over time
-          without manual intervention to find or sort the data.
+          Built a script that automatically pulls inspection images from every deployed system,
+          assigns unique filenames, removes duplicates, and organizes them by result category.
+          When a model needs retraining, a clean and organized dataset is already waiting.
+          No manual sorting or cleanup required.
         </p>
-        <span class="card-metric">Automated failure logging · continuous retraining feedback loop</span>
+        <span class="card-metric">Automated image collection · deduplication · organized for retraining</span>
       </div>
 
       <div class="story-card">
@@ -770,26 +769,6 @@
         </div>
       </div>
 
-      <!-- LoL -->
-      <div class="project-card">
-        <div class="project-img-placeholder">League of Legends VOD Tool</div>
-        <div class="project-body">
-          <p class="project-tag">Video Analysis Pipeline</p>
-          <h3 class="project-title">League of Legends VOD Analyzer</h3>
-          <p class="project-desc">
-            Video analysis pipeline to automatically track map positions,
-            detect player movement patterns, identify strategic timing windows,
-            and evaluate team compositions from match footage.
-            Integrated Riot Games API and web scraping for structured data ingestion.
-          </p>
-          <div class="project-metrics">
-            <span class="metric-pill cyan">CV pipeline</span>
-            <span class="metric-pill cyan">API integration</span>
-          </div>
-          <p class="project-stack">Python · PyTorch · OpenCV · Beautiful Soup · Riot API</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -810,7 +789,6 @@
           <span class="skill-tag">Git</span>
           <span class="skill-tag">Azure DevOps</span>
           <span class="skill-tag">Real-Time Systems</span>
-          <span class="skill-tag">Edge Deployment</span>
           <span class="skill-tag">Hardware/Software Integration</span>
         </div>
       </div>
@@ -833,7 +811,6 @@
         <div class="skill-tags">
           <span class="skill-tag">Embedded Systems Integration</span>
           <span class="skill-tag">Desktop Application Development</span>
-          <span class="skill-tag">Hardware/Software Integration</span>
           <span class="skill-tag">Camera Systems</span>
           <span class="skill-tag">Sensor Integration</span>
           <span class="skill-tag">Two-Stage Detection Pipelines</span>
@@ -843,11 +820,10 @@
       <div class="skill-group">
         <p class="skill-group-label">Data</p>
         <div class="skill-tags">
-          <span class="skill-tag">Semi-Automated Labeling</span>
-          <span class="skill-tag">Active Learning</span>
-          <span class="skill-tag">Hard Negative Mining</span>
-          <span class="skill-tag">Closed-Loop ML</span>
           <span class="skill-tag">Dataset Curation</span>
+          <span class="skill-tag">Automated Data Collection</span>
+          <span class="skill-tag">Training Data Pipelines</span>
+          <span class="skill-tag">Structured Inference Logging</span>
           <span class="skill-tag">Model Versioning</span>
         </div>
       </div>
@@ -855,20 +831,20 @@
         <p class="skill-group-label">Backend</p>
         <div class="skill-tags">
           <span class="skill-tag">.NET</span>
-          <span class="skill-tag">Microservices</span>
           <span class="skill-tag">Real-Time Data Processing</span>
           <span class="skill-tag">Observability & Logging</span>
           <span class="skill-tag">Performance Profiling</span>
-          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">CI Pipelines</span>
         </div>
       </div>
       <div class="skill-group">
         <p class="skill-group-label">Familiar</p>
         <div class="skill-tags">
           <span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">TensorRT</span>
-          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Keras</span>
           <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">LiteDB</span>
           <span class="skill-tag">MATLAB</span>
           <span class="skill-tag">C++</span>
           <span class="skill-tag">Unity</span>
