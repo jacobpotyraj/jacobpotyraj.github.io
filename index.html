@@ -37,7 +37,6 @@
       overflow-x: hidden;
     }
 
-    /* Grid overlay */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +50,6 @@
       z-index: 0;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -90,7 +88,6 @@
 
     .nav-links a:hover { color: var(--cyan); }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -169,10 +166,7 @@
       flex-wrap: wrap;
     }
 
-    .stat {
-      display: flex;
-      flex-direction: column;
-    }
+    .stat { display: flex; flex-direction: column; }
 
     .stat-num {
       font-family: var(--mono);
@@ -212,23 +206,11 @@
       border: none;
     }
 
-    .btn-primary {
-      background: var(--cyan);
-      color: var(--bg);
-      font-weight: 600;
-    }
-
+    .btn-primary { background: var(--cyan); color: var(--bg); font-weight: 600; }
     .btn-primary:hover { background: #00e8bf; transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    /* ── SECTIONS ── */
     section {
       position: relative;
       z-index: 1;
@@ -262,7 +244,6 @@
       margin-bottom: 3.5rem;
     }
 
-    /* ── STORY ── */
     .story-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -333,7 +314,6 @@
       margin-top: 1.2rem;
     }
 
-    /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -349,10 +329,7 @@
       transition: border-color 0.2s, transform 0.2s;
     }
 
-    .project-card:hover {
-      border-color: var(--cyan-dim);
-      transform: translateY(-2px);
-    }
+    .project-card:hover { border-color: var(--cyan-dim); transform: translateY(-2px); }
 
     .project-img {
       width: 100%;
@@ -429,7 +406,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── SKILLS ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -455,11 +431,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .skill-tag {
       font-family: var(--mono);
@@ -528,9 +500,7 @@
     .exp-bullets li strong { color: var(--text); font-weight: 500; }
 
     /* ── CONTACT ── */
-    .contact-inner {
-      max-width: 640px;
-    }
+    .contact-inner { max-width: 640px; }
 
     .contact-links {
       display: flex;
@@ -539,7 +509,6 @@
       margin-top: 2rem;
     }
 
-    /* ── FOOTER ── */
     footer {
       position: relative;
       z-index: 1;
@@ -552,16 +521,13 @@
       letter-spacing: 0.06em;
     }
 
-    /* ── ANIMATIONS ── */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 0.6s ease forwards;
     }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     .fade-in:nth-child(1) { animation-delay: 0.1s; }
     .fade-in:nth-child(2) { animation-delay: 0.2s; }
@@ -569,7 +535,6 @@
     .fade-in:nth-child(4) { animation-delay: 0.4s; }
     .fade-in:nth-child(5) { animation-delay: 0.5s; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
@@ -583,7 +548,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <span class="nav-logo">jp://portfolio</span>
     <ul class="nav-links">
@@ -594,12 +558,11 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-tag fade-in">Available · Open to Relocation</div>
       <h1 class="fade-in">Jacob<br><span class="last">Potyraj</span></h1>
-      <p class="hero-sub fade-in">Software Engineer / Computer Vision & ML</p>
+      <p class="hero-sub fade-in">Software Engineer / Computer Vision &amp; ML</p>
       <p class="hero-desc fade-in">
         5 years shipping <strong>production software systems</strong> with real hardware constraints,
         real users, and zero tolerance for downtime. I design, build, and deploy end-to-end
@@ -633,9 +596,8 @@
     </div>
   </section>
 
-  <!-- STORY -->
   <section id="story">
-    <p class="section-label">Gentex Corporation · 2021–Present</p>
+    <p class="section-label">Gentex Corporation · 2021&ndash;Present</p>
     <h2 class="section-title">Building Software That Ships to Production</h2>
     <p class="section-intro">
       I own the full lifecycle: requirements, architecture, implementation, deployment, and monitoring.
@@ -643,8 +605,9 @@
       on an active production floor every day. Here are some examples of what that looks like.
     </p>
     <div class="story-grid">
+
       <div class="story-card featured">
-        <p class="card-tag">⭐ Flagship Achievement</p>
+        <p class="card-tag">&#11088; Flagship Achievement</p>
         <h3 class="card-title">Identified a Business Problem and Shipped the Fix</h3>
         <p class="card-body">
           Products were being incorrectly rejected across multiple automated inspection stations,
@@ -699,6 +662,20 @@
       </div>
 
       <div class="story-card">
+        <p class="card-tag">Hardware Integration</p>
+        <h3 class="card-title">Bridging Software and Industrial Control Systems</h3>
+        <p class="card-body">
+          Every inspection station on the production floor is coordinated through an Allen Bradley PLC.
+          My software interfaces with those PLCs over EtherNet/IP, exchanging enable signals, image-done bits,
+          and robot coordinate data to synchronize automated decisions with physical machine state.
+          This required designing I/O specifications collaboratively with controls engineers &mdash;
+          deciding exactly what signals are needed, when they fire, and what the software layer does with them.
+          The result is tight hardware/software coordination that keeps the line running safely and in sync.
+        </p>
+        <span class="card-metric">Allen Bradley · EtherNet/IP · I/O signal design · robot coordinate exchange</span>
+      </div>
+
+      <div class="story-card">
         <p class="card-tag">Measured Impact</p>
         <h3 class="card-title">$1.2M in Documented Annual Cost Savings</h3>
         <p class="card-body">
@@ -710,10 +687,10 @@
         </p>
         <span class="card-metric">5.2% waste reduction · $1.2M annual savings · sub-500ms response time</span>
       </div>
+
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <p class="section-label">Portfolio</p>
     <h2 class="section-title">Projects</h2>
@@ -724,7 +701,6 @@
     </p>
     <div class="projects-grid">
 
-      <!-- MVTec -->
       <div class="project-card">
         <img src="images/prediction_grid.png" alt="MVTec prediction grid" class="project-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="project-img-placeholder" style="display:none">prediction_grid.png</div>
@@ -747,7 +723,6 @@
         </div>
       </div>
 
-      <!-- CIFAR-10 -->
       <div class="project-card">
         <img src="images/benchmark_chart.png" alt="Benchmark chart" class="project-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="project-img-placeholder" style="display:none">benchmark_chart.png</div>
@@ -763,7 +738,7 @@
           <div class="project-metrics">
             <span class="metric-pill cyan">76.74% accuracy</span>
             <span class="metric-pill amber">2.13x speedup</span>
-            <span class="metric-pill cyan">0.596ms → 0.280ms</span>
+            <span class="metric-pill cyan">0.596ms &rarr; 0.280ms</span>
           </div>
           <p class="project-stack">Python · PyTorch · ONNX Runtime · CUDA · GTX 1080 Ti</p>
         </div>
@@ -772,12 +747,12 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <p class="section-label">Technical Stack</p>
     <h2 class="section-title">Skills</h2>
     <p class="section-intro">Production-tested, not just listed.</p>
     <div class="skills-grid">
+
       <div class="skill-group">
         <p class="skill-group-label">Proficient</p>
         <div class="skill-tags">
@@ -792,6 +767,7 @@
           <span class="skill-tag">Hardware/Software Integration</span>
         </div>
       </div>
+
       <div class="skill-group">
         <p class="skill-group-label">ML / AI</p>
         <div class="skill-tags">
@@ -806,8 +782,21 @@
           <span class="skill-tag">Model Deployment</span>
         </div>
       </div>
+
       <div class="skill-group">
-        <p class="skill-group-label">Systems & Integration</p>
+        <p class="skill-group-label">Industrial &amp; Controls</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Allen Bradley PLC Integration</span>
+          <span class="skill-tag">EtherNet/IP</span>
+          <span class="skill-tag">PLC Interfacing</span>
+          <span class="skill-tag">I/O Signal Design</span>
+          <span class="skill-tag">Controls-Software Coordination</span>
+          <span class="skill-tag">Robot Coordinate Systems</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <p class="skill-group-label">Systems &amp; Integration</p>
         <div class="skill-tags">
           <span class="skill-tag">Embedded Systems Integration</span>
           <span class="skill-tag">Desktop Application Development</span>
@@ -817,6 +806,7 @@
           <span class="skill-tag">Spatial Coordinate Transforms</span>
         </div>
       </div>
+
       <div class="skill-group">
         <p class="skill-group-label">Data</p>
         <div class="skill-tags">
@@ -827,16 +817,18 @@
           <span class="skill-tag">Model Versioning</span>
         </div>
       </div>
+
       <div class="skill-group">
         <p class="skill-group-label">Backend</p>
         <div class="skill-tags">
           <span class="skill-tag">.NET</span>
           <span class="skill-tag">Real-Time Data Processing</span>
-          <span class="skill-tag">Observability & Logging</span>
+          <span class="skill-tag">Observability &amp; Logging</span>
           <span class="skill-tag">Performance Profiling</span>
           <span class="skill-tag">CI Pipelines</span>
         </div>
       </div>
+
       <div class="skill-group">
         <p class="skill-group-label">Familiar</p>
         <div class="skill-tags">
@@ -849,12 +841,13 @@
           <span class="skill-tag">C++</span>
           <span class="skill-tag">Unity</span>
           <span class="skill-tag">Halcon</span>
+          <span class="skill-tag">Ladder Logic</span>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
       <p class="section-label">Get In Touch</p>
@@ -873,7 +866,7 @@
   </section>
 
   <footer>
-    <span>Jacob Potyraj · Grand Rapids, MI · Open to Relocation · (616) 498-1209</span>
+    <span>Jacob Potyraj · Redmond, WA · Open to Relocation · (616) 498-1209</span>
   </footer>
 
 </body>
